@@ -7,7 +7,7 @@ const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const sequelize = require("./config/connection");
-
+const routes = require("./routes");
 const PORT = process.env.PORT || 3000;
 
 const app = express();
@@ -33,7 +33,7 @@ app.use(session(sessionOptions));
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../", "public")));
-
+app.use(routes);
 const init = async () => {
   try {
     await sequelize.sync();
