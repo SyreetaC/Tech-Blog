@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Blog post 1",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "user_id": 1
+  },
+  {
+    "title": "Blog post 2",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "user_id": 2
+  },
+  {
+    "title": "Blog post 3",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "user_id": 1
+  }
+]
