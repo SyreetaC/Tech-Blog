@@ -1,11 +1,11 @@
 const { Router } = require("express");
 
 const renderHomePage = require("../../controllers/html/renderHomePage");
-const renderLoginPage = require("../../controllers/view/renderLoginPage");
-const renderSignupPage = require("../../controllers/view/renderSignupPage");
-const renderDashboardPage = require("../../controllers/view/renderDashboardPage");
-const renderPostPage = require("../../controllers/view/renderPostPage");
-const renderCreatePostPage = require("../../controllers/view/renderCreatePostPage");
+const renderLoginPage = require("../../controllers/html/renderLoginPage");
+const renderSignupPage = require("../../controllers/html/renderSignupPage");
+const renderDashboardPage = require("../../controllers/html/renderDashboardPage");
+const renderPostPage = require("../../controllers/html/renderPostPage");
+const renderCreatePostPage = require("../../controllers/html/renderCreatePostPage");
 
 const router = Router();
 
