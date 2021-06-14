@@ -11,9 +11,11 @@ const handleLogin = async (req, res) => {
       return res.status(401).json({ error: "Failed to login" });
     }
 
+    // const validPassword = await user.isPasswordValid(password);
+
     if (user.password !== password) {
       console.log("Invalid password");
-      return res.status(401).json({ error: "Failed to login" });
+      return res.status(404).json({ error: "Failed to login" });
     }
 
     req.session.save(() => {
