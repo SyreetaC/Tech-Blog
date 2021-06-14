@@ -1,8 +1,10 @@
+const { Post, User, Comment } = require("../../models");
+
 const renderDashboardPage = (req, res) => {
   // get all YOUR posts
   Post.findAll({
     where: {
-      user_id: req.session.user_id,
+      user_id: req.session.id,
     },
     attributes: ["id", "title", "body", "user_id"],
     include: [
