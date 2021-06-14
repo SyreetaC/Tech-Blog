@@ -66,10 +66,26 @@ const handleLoginSubmit = async (event) => {
   }
 };
 
-const handleLogoutClick = () => {
+const handleLogoutClick = async () => {
   // POST request with username and password
   // /auth/logout
   // on success window location to /
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    redirect: "follow",
+  };
+
+  const response = await fetch("/auth/logout", options);
+
+  if (response.status !== 200) {
+    console.log("FAILED LOGOUT");
+  } else {
+    window.location.replace("/login");
+  }
 };
 
 const handleCommentSubmit = () => {
@@ -92,4 +108,5 @@ const handlePostDelete = () => {
 
 $("#signup-form").submit(handleSignupSubmit);
 $("#login-form").submit(handleLoginSubmit);
+$("#").click(handleLogoutClick);
 console.log("client-side JS");

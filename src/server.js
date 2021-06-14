@@ -21,7 +21,7 @@ const sessionOptions = {
   }),
 };
 
-// const handlebarsOptions = {};
+const handlebarsOptions = {};
 
 const hbs = handlebars.create();
 
