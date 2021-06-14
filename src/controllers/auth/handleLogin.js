@@ -5,16 +5,13 @@ const handleLogin = async (req, res) => {
     const { username, password } = req.body;
 
     const user = await User.findOne({ where: { username } });
-    console.log(user);
 
     if (!user) {
       console.log("User does not exist");
       return res.status(401).json({ error: "Failed to login" });
     }
 
-    const validPassword = await user.isPasswordValid(password);
-
-    if (!validPassword) {
+    if (user.password !== password) {
       console.log("Invalid password");
       return res.status(401).json({ error: "Failed to login" });
     }
