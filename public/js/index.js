@@ -4,10 +4,34 @@ const handleSignupSubmit = () => {
   // on success window location to /login
 };
 
-const handleLoginSubmit = () => {
+const handleLoginSubmit = async (event) => {
   // POST request with username and password
   // /auth/login
   // on success window location to /dashboard
+  event.preventDefault();
+
+  const username = $("#username-login").val();
+  const password = $("#password-login").val();
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    redirect: "follow",
+    body: JSON.stringify({
+      username,
+      password,
+    }),
+  };
+
+  const response = await fetch("/auth/login", options);
+
+  if (response.status !== 200) {
+    console.log("FAILED LOGIN");
+  } else {
+    window.location.replace("/dashboard");
+  }
 };
 
 const handleLogoutClick = () => {
@@ -34,4 +58,5 @@ const handlePostDelete = () => {
   // on success window location to /dashboard
 };
 
+$("#login-form").submit(handleLoginSubmit);
 console.log("client-side JS");
