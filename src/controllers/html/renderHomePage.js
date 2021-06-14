@@ -1,6 +1,8 @@
-const renderHomePage = (req, res) => {
+const { Post, User, Comment } = require("../../models");
+
+const renderHomePage = async (req, res) => {
   //get all posts
-  Post.findAll({
+  const posts = await Post.findAll({
     attributes: ["id", "title", "body", "user_id"],
     include: [
       {
@@ -16,6 +18,7 @@ const renderHomePage = (req, res) => {
     ],
   });
 
+  console.log(posts);
   //TO DO send posts to handlebars
   res.render("homepage");
 };
