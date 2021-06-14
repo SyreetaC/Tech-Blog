@@ -1,22 +1,22 @@
 const { User } = require("../../models");
 
 const handleLogin = async (req, res) => {
-  console.log("Handle login");
   try {
     const { username, password } = req.body;
 
     const user = await User.findOne({ where: { username } });
+    console.log(user);
 
     if (!user) {
       console.log("User does not exist");
-      return res.status(404).json({ error: "Failed to login" });
+      return res.status(401).json({ error: "Failed to login" });
     }
 
     const validPassword = await user.isPasswordValid(password);
 
     if (!validPassword) {
       console.log("Invalid password");
-      return res.status(404).json({ error: "Failed to login" });
+      return res.status(401).json({ error: "Failed to login" });
     }
 
     req.session.save(() => {
