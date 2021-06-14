@@ -4,7 +4,7 @@ const handleCreatePost = (req, res) => {
   Post.create({
     title: req.body.title,
     body: req.body.body,
-    user_id: req.session.user_id,
+    user_id: req.session.id,
   });
   res.json("insert post here");
 };

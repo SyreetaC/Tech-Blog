@@ -8,6 +8,6 @@
 
 // router.post("/:id/comments", handleCommentForPost);
 // router.delete("/:id", handleDeletePost);
-// router.post("/", handleCreatePost);
+// router.post("/new-post", handleCreatePost);
 
 // module.exports = router;
