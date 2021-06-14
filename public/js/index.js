@@ -108,5 +108,5 @@ const handlePostDelete = () => {
 
 $("#signup-form").submit(handleSignupSubmit);
 $("#login-form").submit(handleLoginSubmit);
-$("#").click(handleLogoutClick);
+// $("#").click(handleLogoutClick);
 console.log("client-side JS");
