@@ -94,10 +94,33 @@ const handleCommentSubmit = () => {
   // on success window location to /posts/{postId}
 };
 
-const handlePostSubmit = () => {
+const handlePostSubmit = async (event) => {
+  event.preventDefault();
   // POST request with title and body
   // /api/posts
   // on success window location to /dashboard
+  const title = $("#post-title").val();
+  const body = $("#post-body").val();
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    redirect: "follow",
+    body: JSON.stringify({
+      title,
+      body,
+    }),
+  };
+
+  const response = await fetch("/api/posts", options);
+
+  if (response.status !== 200) {
+    console.log("FAILED TO POST NEW BLOG POST");
+  } else {
+    window.location.replace("/dashboard");
+  }
 };
 
 const handlePostDelete = () => {
@@ -108,5 +131,6 @@ const handlePostDelete = () => {
 
 $("#signup-form").submit(handleSignupSubmit);
 $("#login-form").submit(handleLoginSubmit);
+$("#new-post-form").submit(handlePostSubmit);
 // $("#").click(handleLogoutClick);
 console.log("client-side JS");
