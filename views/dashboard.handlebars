@@ -2,6 +2,11 @@
 
 <section>
   <h2>Your Posts</h2>
-   <div>Posts go here!</div>
+   <div>{{#each post as |post|}}
+     <h3>Title: {{post.title}}</h3>
+     <p>Body: {{post.body}}</p>
+     {{/each}}</div> 
 
 </section>
+
+<button type="submit" class="btn"><a class="link" href="/create-post">Add New Post</a></button>
