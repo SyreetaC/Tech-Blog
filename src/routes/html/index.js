@@ -1,23 +1,14 @@
 const { Router } = require("express");
 
-const renderHomePage = require("../../controllers/html/renderHomePage");
-const renderLoginPage = require("../../controllers/html/renderLoginPage");
-const renderSignupPage = require("../../controllers/html/renderSignupPage");
-const renderDashboardPage = require("../../controllers/html/renderDashboardPage");
-const renderPostPage = require("../../controllers/html/renderPostPage");
-const renderCreatePostPage = require("../../controllers/html/renderCreatePostPage");
+const auth = require("../../middleware/auth");
+const publicRoute = require("./public");
+const privateRoute = require("./private");
 
 const router = Router();
 
-router.get("/sign-up", renderSignupPage);
-router.get("/login", renderLoginPage);
-// add auth middleware here
-router.get("/dashboard", renderDashboardPage);
-// add auth middleware here
-router.get("/posts/:id", renderPostPage);
-// add auth middleware here
-router.get("/create-post", renderCreatePostPage);
+router.use(publicRoute);
+router.use(auth, privateRoute);
 
-router.get("/", renderHomePage);
+//REFACTOR ROUTERS TO PUBLIC AND PRIVATE!
 
 module.exports = router;

@@ -17,10 +17,11 @@ const renderHomePage = async (req, res) => {
       },
     ],
   });
+  console.log(posts);
 
   // console.log(posts);
   //TO DO send posts to handlebars
-  res.render("homepage");
+  res.render("homepage", { posts });
 };
 
 module.exports = renderHomePage;
