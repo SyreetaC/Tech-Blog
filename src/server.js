@@ -23,7 +23,7 @@ const sessionOptions = {
 
 const handlebarsOptions = {};
 
-const hbs = handlebars.create();
+const hbs = handlebars.create(handlebarsOptions);
 
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
