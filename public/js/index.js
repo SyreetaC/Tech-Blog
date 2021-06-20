@@ -109,7 +109,7 @@ const handleCommentSubmit = async (event) => {
   };
 
   const response = await fetch("/api/posts/${id}/comments", options);
-
+  console.log(response);
   if (response.status !== 200) {
     console.log("FAILED LOGIN");
   } else {

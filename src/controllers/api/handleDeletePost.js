@@ -1,9 +1,8 @@
 const handleDeletePost = (req, res) => {
-  // get id from req params
-  // destroy post
+  const { id } = req.params;
   Post.destroy({
     where: {
-      id: req.params.id,
+      id,
     },
   });
   res.json("delete post here");

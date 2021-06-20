@@ -1,14 +1,12 @@
-const handleCommentForPost = (req, res) => {
+const handleCommentForPost = async (req, res) => {
   // get comment message from req body
-  Comment.create({
+  await Comment.create({
     user_id: req.session.user_id,
     post_id: req.body.post_id,
     message: req.body.message,
   });
   // insert new comment with userId and postId
-  res.json("insert comment to comment table with all data");
+  res.status(200).json({ message: "success" });
 };
-
-//TO DO update/ delete comments here?
 
 module.exports = handleCommentForPost;
