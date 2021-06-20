@@ -88,7 +88,33 @@ const handleLogoutClick = async () => {
   }
 };
 
-const handleCommentSubmit = () => {
+const handleCommentSubmit = async (event) => {
+  event.preventDefault();
+
+  const message = $("#comment").val();
+  const { id } = event.currentTarget;
+
+  const requestBody = { message };
+  console.log(id, message);
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    redirect: "follow",
+    body: JSON.stringify({
+      requestBody,
+    }),
+  };
+
+  const response = await fetch("/api/posts/${id}/comments", options);
+
+  if (response.status !== 200) {
+    console.log("FAILED LOGIN");
+  } else {
+    window.location.replace(window.location.pathname);
+  }
   // POST request with comment message
   // /api/posts/{postId}/comments
   // on success window location to /posts/{postId}
@@ -136,5 +162,6 @@ const handleCommentDelete = () => {
 $("#signup-form").submit(handleSignupSubmit);
 $("#login-form").submit(handleLoginSubmit);
 $("#new-post-form").submit(handlePostSubmit);
+$('[name="comment-form"]').submit(handleCommentSubmit);
 // $("#").click(handleLogoutClick);
 console.log("client-side JS");
