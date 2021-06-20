@@ -115,9 +115,6 @@ const handleCommentSubmit = async (event) => {
   } else {
     window.location.replace(window.location.pathname);
   }
-  // POST request with comment message
-  // /api/posts/{postId}/comments
-  // on success window location to /posts/{postId}
 };
 
 const handlePostSubmit = async (event) => {
@@ -163,5 +160,5 @@ $("#signup-form").submit(handleSignupSubmit);
 $("#login-form").submit(handleLoginSubmit);
 $("#new-post-form").submit(handlePostSubmit);
 $('[name="comment-form"]').submit(handleCommentSubmit);
-// $("#").click(handleLogoutClick);
+$("#logout-button").click(handleLogoutClick);
 console.log("client-side JS");
