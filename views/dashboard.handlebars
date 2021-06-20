@@ -5,7 +5,10 @@
    <div>{{#each posts as |post|}}
      <h3>Title: {{post.title}}</h3>
      <p>Body: {{post.body}}</p>
+     <button type="click" class="view-btn"><a class="link" href="/">View post</a>
+     <button type="click" class="delete-btn"><a class="link" href="/:id">Delete post</a>
      {{/each}}</div> 
+     
 
 </section>
 
