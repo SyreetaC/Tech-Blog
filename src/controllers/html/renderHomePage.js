@@ -2,7 +2,7 @@ const { Post, User, Comment } = require("../../models");
 
 const renderHomePage = async (req, res) => {
   //get all posts
-  const posts = await Post.findAll({
+  const postsFromModel = await Post.findAll({
     attributes: ["id", "title", "body", "user_id"],
     include: [
       {
@@ -17,11 +17,12 @@ const renderHomePage = async (req, res) => {
       },
     ],
   });
-  console.log(posts);
+  const { isLoggedIn } = req.session;
 
-  // console.log(posts);
   //TO DO send posts to handlebars
-  res.render("homepage", { posts });
+  const posts = postsFromModel.map((post) => post.get({ plain: true }));
+  console.log(posts);
+  res.render("homepage", { isLoggedIn, posts });
 };
 
 module.exports = renderHomePage;

@@ -1,8 +1,8 @@
-const { Post, Comment } = require("../../models");
+const { Post, Comment, User } = require("../../models");
 
 const renderPostPage = async (req, res) => {
   // get post by ID with associated user and comments
-  const post = await Post.findOne({
+  const postFromModel = await Post.findOne({
     where: {
       id: req.params.id,
     },
@@ -27,8 +27,17 @@ const renderPostPage = async (req, res) => {
       },
     ],
   });
+  const post = postFromModel.get({ plain: true });
+  const comments = post.comments.map((comment) => {
+    return {
+      ...comment,
+      myComment: req.session.userId === comment.user_id,
+    };
+  });
+
+  console.log(post, comments);
   // send YOUR data to handlebars
-  res.render("post", post);
+  res.render("viewPost", post);
 };
 
 module.exports = renderPostPage;

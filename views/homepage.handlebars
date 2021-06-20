@@ -1,3 +1,11 @@
 {{> navBar}}
 
-<div>Render all the posts here</div>
+<div class="container">
+  <h1 class="text-center p-4">Blogs from all users</h1>
+  <hr />
+  <div class="d-flex flex-wrap justify-content-between">
+    {{#each posts }}
+      {{> blogCard}}
+    {{/each}}
+  </div>
+</div>

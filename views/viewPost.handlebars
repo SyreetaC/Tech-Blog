@@ -3,7 +3,7 @@
 <div class="container">
   <div class="text-center">
     <h1>{{title}}</h1>
-    <h6>By {{user.username}}</h6>
+    <h6>By {{username}}</h6>
     <hr />
     <div class="p-4">{{body}}</div>
   </div>
@@ -13,7 +13,7 @@
     <ul class="list-group">
       {{#each comments}}
         <li class="list-group-item">
-          {{> commentCard}}
+          {{> comment}}
         </li>
       {{/each}}
     </ul>
