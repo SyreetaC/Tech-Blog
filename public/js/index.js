@@ -129,6 +129,10 @@ const handlePostDelete = () => {
   // on success window location to /dashboard
 };
 
+const handleCommentDelete = () => {
+  //DELETE COMMENT HERE
+};
+
 $("#signup-form").submit(handleSignupSubmit);
 $("#login-form").submit(handleLoginSubmit);
 $("#new-post-form").submit(handlePostSubmit);

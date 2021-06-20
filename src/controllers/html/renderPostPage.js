@@ -1,6 +1,8 @@
-const renderPostPage = (req, res) => {
+const { Post, Comment } = require("../../models");
+
+const renderPostPage = async (req, res) => {
   // get post by ID with associated user and comments
-  Post.findOne({
+  const post = await Post.findOne({
     where: {
       id: req.params.id,
     },
@@ -26,7 +28,7 @@ const renderPostPage = (req, res) => {
     ],
   });
   // send YOUR data to handlebars
-  res.render("post");
+  res.render("post", post);
 };
 
 module.exports = renderPostPage;
