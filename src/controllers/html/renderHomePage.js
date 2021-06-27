@@ -21,7 +21,6 @@ const renderHomePage = async (req, res) => {
 
   //TO DO send posts to handlebars
   const posts = postsFromModel.map((post) => post.get({ plain: true }));
-  console.log(posts);
   res.render("homepage", { isLoggedIn, posts });
 };
 

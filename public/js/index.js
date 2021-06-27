@@ -37,9 +37,6 @@ const handleSignupSubmit = async (event) => {
 };
 
 const handleLoginSubmit = async (event) => {
-  // POST request with username and password
-  // /auth/login
-  // on success window location to /dashboard
   event.preventDefault();
 
   const username = $("#username-login").val();
@@ -109,7 +106,6 @@ const handleCommentSubmit = async (event) => {
   };
 
   const response = await fetch("/api/posts/${id}/comments", options);
-  console.log(response);
   if (response.status !== 200) {
     console.log("FAILED LOGIN");
   } else {
@@ -146,19 +142,40 @@ const handlePostSubmit = async (event) => {
   }
 };
 
-const handlePostDelete = () => {
+const handlePostDelete = async (event) => {
+  event.preventDefault();
+
+  const { id } = req.params;
+
+  const options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    redirect: "follow",
+    body: JSON.stringify({
+      post_id: id,
+    }),
+  };
+
+  const response = await fetch(`/api/posts/${id}`);
+
+  if (response.status !== 200) {
+    console.log("FAILED TO DELETE BLOG POST");
+  } else {
+    window.location.replace("/dashboard");
+  }
   // DELETE request for post id
   // /api/posts/{postId}
   // on success window location to /dashboard
 };
 
-const handleCommentDelete = () => {
-  //DELETE COMMENT HERE
-};
+const handleCommentDelete = async (event) => {};
 
 $("#signup-form").submit(handleSignupSubmit);
 $("#login-form").submit(handleLoginSubmit);
 $("#new-post-form").submit(handlePostSubmit);
+$("#delete-post-btn").click(handlePostDelete);
 $('[name="comment-form"]').submit(handleCommentSubmit);
 $("#logout-button").click(handleLogoutClick);
 console.log("client-side JS");

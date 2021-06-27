@@ -1,16 +1,14 @@
 {{>loggedInNavBar}}
 
-<section>
+<section class="container">
   <h2>Your Posts</h2>
-   <div>{{#each posts as |post|}}
-     <h3>Title: {{post.title}}</h3>
-     <p>Body: {{post.body}}</p>
-     <button type="click" class="view-btn"><a class="link" href="/">View post</a>
-     <button type="click" class="delete-btn"><a class="link" href="/:id">Delete post</a>
-     {{/each}}</div> 
-     
+  <hr />
+   <div class="d-flex flex-wrap justify-content-between">{{#each posts as |post|}}
+      {{> blogCard}}
+     {{/each}}
 
 </section>
+
 
 {{!-- Need button on each post to say view and redirect to view posts page.  --}}
 
