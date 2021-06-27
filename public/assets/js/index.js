@@ -162,15 +162,16 @@ const handlePostDelete = async (event) => {
   // on success window location to /dashboard
 };
 
-const handlePostUpdate = async (event) => {
+const handlePostEdit = async (event) => {
   const { id } = event.target;
+  //to do!
 };
 
 $("#signup-form").submit(handleSignupSubmit);
 $("#login-form").submit(handleLoginSubmit);
 $("#create-blog").submit(handlePostSubmit);
 $('[name="delete-post-btn"]').click(handlePostDelete);
-$("#update-post-btn").click(handlePostUpdate);
+$('[name="edit-blog"]').submit(handlePostEdit);
 $('[name="comment-form"]').submit(handleCommentSubmit);
 $("#logout-button").click(handleLogoutClick);
 console.log("client-side JS");

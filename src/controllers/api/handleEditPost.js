@@ -1,12 +1,11 @@
-const handleEditPosts = () => {
-  console.log("hello");
+const handleEditPosts = async (req, res) => {
   try {
     const { title, body } = req.body;
     const { id } = req.params;
 
-    const post = { title, body };
+    const updatedPost = { title, body };
 
-    const [updated] = await Post.update(post, { where: { id } });
+    const updated = await Post.update(updatedPost, { where: { id } });
 
     if (!updated) {
       return res.status(404).json({ error: "Post does not exist" });

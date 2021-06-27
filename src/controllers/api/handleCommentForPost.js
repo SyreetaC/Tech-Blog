@@ -1,3 +1,5 @@
+const Comment = require("../../models");
+
 const handleCommentForPost = async (req, res) => {
   // get comment message from req body
   const { id } = req.params;
