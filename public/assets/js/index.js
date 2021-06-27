@@ -7,8 +7,6 @@ const handleSignupSubmit = async (event) => {
   const username = $("#username").val();
   const password = $("#password").val();
 
-  console.log(username, password);
-
   if (!username || !password) {
     console.log("YOU NEED TO ENTER SOMETHING");
     return;
@@ -116,11 +114,14 @@ const handleCommentSubmit = async (event) => {
 
 const handlePostSubmit = async (event) => {
   event.preventDefault();
-  // POST request with title and body
-  // /api/posts
-  // on success window location to /dashboard
-  const title = $("#post-title").val();
-  const body = $("#post-body").val();
+
+  const title = $("#blog-title").val();
+  const body = $("#blog-content").val();
+
+  const requestBody = {
+    title,
+    body,
+  };
 
   const options = {
     method: "POST",
@@ -128,18 +129,15 @@ const handlePostSubmit = async (event) => {
       "Content-Type": "application/json",
     },
     redirect: "follow",
-    body: JSON.stringify({
-      title,
-      body,
-    }),
+    body: JSON.stringify(requestBody),
   };
 
-  const response = await fetch("/api/posts", options);
+  const response = await fetch(`/api/posts`, options);
 
-  if (response.status !== 200) {
-    console.log("FAILED TO POST NEW BLOG POST");
-  } else {
+  if (response.status === 200) {
     window.location.replace("/dashboard");
+  } else {
+    console.log("Failed to create post");
   }
 };
 
@@ -175,7 +173,7 @@ const handleCommentDelete = async (event) => {};
 
 $("#signup-form").submit(handleSignupSubmit);
 $("#login-form").submit(handleLoginSubmit);
-$("#create-post-btn").submit(handlePostSubmit);
+$("#create-blog").submit(handlePostSubmit);
 $("#delete-post-btn").click(handlePostDelete);
 $('[name="comment-form"]').submit(handleCommentSubmit);
 $("#logout-button").click(handleLogoutClick);

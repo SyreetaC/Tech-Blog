@@ -30,7 +30,6 @@ const renderDashboardPage = async (req, res) => {
   // console.log(postsResult);
   // send YOUR posts to handlebars
   const posts = postsResult.map((post) => post.get({ plain: true }));
-  console.log(posts);
   res.render("dashboard", { posts });
 };
 
