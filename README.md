@@ -8,7 +8,9 @@
   - [Description](#description)
   - [Link to GitHub repository](#link-to-github-repository)
   - [Getting started](#getting-started)
+  - [ENV structure](#ENV-structure)
   - [Technologies used](#technologies-used)
+  - [Screenshots](#screenshots)
 
 ## Link to deployed app
 
@@ -30,6 +32,15 @@ https://github.com/SyreetaC/Tech-Blog
 
 `npm run start`
 
+## ENV structure:
+
+DB_USER=
+DB_PASSWORD=
+DB_HOST=
+DB_PORT=
+DB_NAME=
+SESSION_SECRET=
+
 ## Technologies used
 
 -Node.js
@@ -39,3 +50,12 @@ https://github.com/SyreetaC/Tech-Blog
 -Handlebars.js
 -MySQL
 -Express Session
+
+## Screenshots
+
+![screenshot1](<public/assets/images/Screenshot%20(33).png>)
+![screenshot2](<public/assets/images/Screenshot%20(34).png>)
+![screenshot3](<public/assets/images/Screenshot%20(35).png>)
+![screenshot4](<public/assets/images/Screenshot%20(36).png>)
+![screenshot5](<public/assets/images/Screenshot%20(37).png>)
+![screenshot6](<public/assets/images/Screenshot%20(38).png>)
