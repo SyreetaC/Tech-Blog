@@ -142,10 +142,7 @@ const handlePostSubmit = async (event) => {
 };
 
 const handlePostDelete = async (event) => {
-  event.preventDefault();
-
-  const id = req.params.id;
-  console.log(id);
+  const { id } = event.target;
 
   const options = {
     method: "DELETE",
@@ -153,9 +150,36 @@ const handlePostDelete = async (event) => {
       "Content-Type": "application/json",
     },
     redirect: "follow",
+  };
+
+  const response = await fetch(`/api/posts/${id}`, options);
+
+  if (response.status === 200) {
+    window.location.replace("/dashboard");
+  } else {
+    console.log("Failed to delete post");
+  }
+  // DELETE request for post id
+  // /api/posts/{postId}
+  // on success window location to /dashboard
+};
+
+const handlePostUpdate = async (event) => {
+  event.preventDefault();
+
+  const id = req.params.id;
+  console.log(id);
+
+  const options = {
+    method: "UPDATE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    redirect: "follow",
     body: JSON.stringify({
       post_id: id,
     }),
+    //need req.body!!!!
   };
 
   const response = await fetch(`/api/posts/${id}`, options);
@@ -165,20 +189,13 @@ const handlePostDelete = async (event) => {
   } else {
     window.location.replace("/dashboard");
   }
-  // DELETE request for post id
-  // /api/posts/{postId}
-  // on success window location to /dashboard
-};
-
-const handleCommentDelete = async (event) => {
-  event.preventDefault();
-  console.log("delete comment");
 };
 
 $("#signup-form").submit(handleSignupSubmit);
 $("#login-form").submit(handleLoginSubmit);
 $("#create-blog").submit(handlePostSubmit);
-$("#delete-post-btn").click(handlePostDelete);
+$('[name="delete-post-btn"]').click(handlePostDelete);
+$("#update-post-btn").click(handlePostUpdate);
 $('[name="comment-form"]').submit(handleCommentSubmit);
 $("#logout-button").click(handleLogoutClick);
 console.log("client-side JS");
