@@ -1,5 +1,5 @@
-const renderSignupPage = (req, res) => {
+const renderSignUpPage = (req, res) => {
   res.render("signup");
 };
 
-module.exports = renderSignupPage;
+module.exports = renderSignUpPage;

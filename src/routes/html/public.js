@@ -2,11 +2,11 @@ const { Router } = require("express");
 
 const renderHomePage = require("../../controllers/html/renderHomePage");
 const renderLoginPage = require("../../controllers/html/renderLoginPage");
-const renderSignupPage = require("../../controllers/html/renderSignupPage");
+const renderSignUpPage = require("../../controllers/html/renderSignUpPage");
 
 const router = Router();
 
-router.get("/sign-up", renderSignupPage);
+router.get("/sign-up", renderSignUpPage);
 router.get("/login", renderLoginPage);
 router.get("/", renderHomePage);
 
