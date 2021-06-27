@@ -144,7 +144,8 @@ const handlePostSubmit = async (event) => {
 const handlePostDelete = async (event) => {
   event.preventDefault();
 
-  const { id } = req.params;
+  const id = req.params.id;
+  console.log(id);
 
   const options = {
     method: "DELETE",
@@ -157,7 +158,7 @@ const handlePostDelete = async (event) => {
     }),
   };
 
-  const response = await fetch(`/api/posts/${id}`);
+  const response = await fetch(`/api/posts/${id}`, options);
 
   if (response.status !== 200) {
     console.log("FAILED TO DELETE BLOG POST");
@@ -169,7 +170,10 @@ const handlePostDelete = async (event) => {
   // on success window location to /dashboard
 };
 
-const handleCommentDelete = async (event) => {};
+const handleCommentDelete = async (event) => {
+  event.preventDefault();
+  console.log("delete comment");
+};
 
 $("#signup-form").submit(handleSignupSubmit);
 $("#login-form").submit(handleLoginSubmit);
