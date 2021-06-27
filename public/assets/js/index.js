@@ -163,15 +163,41 @@ const handlePostDelete = async (event) => {
 };
 
 const handlePostEdit = async (event) => {
-  const { id } = event.target;
-  //to do!
+  event.preventDefault();
+
+  const { id } = event.currentTarget;
+
+  const title = $("#blog-title").val();
+  const body = $("#blog-content").val();
+
+  const requestBody = {
+    title,
+    body,
+  };
+
+  const options = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    redirect: "follow",
+    body: JSON.stringify(requestBody),
+  };
+
+  const response = await fetch(`/api/posts/${id}/edit`, options);
+
+  if (response.status === 200) {
+    window.location.replace(`/posts/${id}`);
+  } else {
+    console.log("Failed to update post");
+  }
 };
 
 $("#signup-form").submit(handleSignupSubmit);
 $("#login-form").submit(handleLoginSubmit);
 $("#create-blog").submit(handlePostSubmit);
 $('[name="delete-post-btn"]').click(handlePostDelete);
-$('[name="edit-blog"]').submit(handlePostEdit);
+$('form[name="edit-blog"]').submit(handlePostEdit);
 $('[name="comment-form"]').submit(handleCommentSubmit);
 $("#logout-button").click(handleLogoutClick);
 console.log("client-side JS");

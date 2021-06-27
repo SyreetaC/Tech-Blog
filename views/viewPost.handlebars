@@ -4,13 +4,16 @@
   <div class="text-center">
     <h1>{{title}}</h1>
     <h6>By {{user.username}}</h6>
-       <div>
-      <button
-        class="btn btn-danger"
-        id="{{id}}"
-        name="delete-post-btn"
-      >Delete</button>
-    </div>
+     {{#if myPost}}
+      <div>
+        <a href="/posts/{{id}}/edit" class="btn btn-primary">Edit</a>
+        <button
+          class="btn btn-danger"
+          id="{{id}}"
+          name="delete-post-btn"
+        >Delete</button>
+      </div>
+    {{/if}}
     <hr />
     <div class="p-4">{{body}}</div>
    
@@ -19,9 +22,7 @@
         
     </form>
    
-    <a href="/posts/{{id}}/edit" class="btn btn-primary">Edit</a>
-</div>
-  </div>
+
   <hr />
   <div class="my-4">
     <h2 class="text-center">Comments</h2>

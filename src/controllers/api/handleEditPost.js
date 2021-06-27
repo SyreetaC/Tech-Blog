@@ -1,3 +1,5 @@
+const { Post } = require("../../models");
+
 const handleEditPosts = async (req, res) => {
   try {
     const { title, body } = req.body;

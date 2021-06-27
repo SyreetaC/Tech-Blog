@@ -35,8 +35,12 @@ const renderPostPage = async (req, res) => {
     };
   });
 
-  // send YOUR data to handlebars
-  res.render("viewPost", post);
+  // verify who can delete and edit posts
+  res.render("viewPost", {
+    ...post,
+    comments,
+    myPost: req.session.userId === post.user_id,
+  });
 };
 
 module.exports = renderPostPage;
