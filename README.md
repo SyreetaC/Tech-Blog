@@ -1,19 +1,41 @@
 # Tech-Blog
 
-### Specific things for Homework 10:
+## Table of Contents
 
-1. You MUST submit a deployed application
-   - The Dashboard MUST redirect the user to the login page if they aren't logged in.
-2. Application MUST display all existing blog posts on the Homepage which includes:
+- [Tech-Blog](#tech-blog)
 
-   - Post Title, Contents, Author's username, Date created.
+  - [Link to deployed app](#link-to-deployed-app)
+  - [Description](#description)
+  - [Link to GitHub repository](#link-to-github-repository)
+  - [Getting started](#getting-started)
+  - [Technologies used](#technologies-used)
 
-   - The Homepage / Dashboard should update to reflect the new post.
+## Link to deployed app
 
-3. Application Dashboard MUST allow users to click into their blog posts and either update or delete them.
-4. Application MUST allow users to click on existing blog posts on the Homepage and see:
-   - Post Title, Contents, Author's username, Date created and any existing comments.
-   - Each comment MUST show:
-     - The comment, comment creator's username, date it was created.
-5. Application allows logged in users to leave a comment on a post they click on. The blog post MUST update to include that comment.
-6. - The user MUST be logged out automatically when they are idle on the site for more than a set time.
+https://thawing-wave-81238.herokuapp.com/
+
+## Description
+
+This is a tech blog application that allows a user to post blogs and comment on others' blogs. It supports account creation/logging in with a username and password. Users can view all posts, or go to their dashboards to see the posts they have made. They can also comment on posts if they are logged in. Users are able to edit and delete their own posts.
+
+## Link to GitHub repository
+
+https://github.com/SyreetaC/Tech-Blog
+
+## Getting started
+
+`git clone https://github.com/SyreetaC/Tech-Blog `
+
+`npm install`
+
+`npm run start`
+
+## Technologies used
+
+-Node.js
+-Express.js
+-JavaScript
+-Sequelize
+-Handlebars.js
+-MySQL
+-Express Session
