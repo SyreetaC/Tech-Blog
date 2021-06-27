@@ -9,5 +9,6 @@ const router = Router();
 router.post("/:id/comments", handleCommentForPost);
 router.delete("/:id", handleDeletePost);
 router.post("/", handleCreatePost);
+router.post("/posts/:id/edit");
 
 module.exports = router;

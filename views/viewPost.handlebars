@@ -13,21 +13,13 @@
     </div>
     <hr />
     <div class="p-4">{{body}}</div>
-    <div class="card">
-    <h3 class="card-header">Edit Post</h3>
-    <form class="card-body edit-post-form">
-        <label for="post-title" class="form-label">Title</label>
-        <input name="post-title" type="text" value="{{post.title}}" class="form-input" />
-       <div class="input-group">
-  <span class="input-group-text">Content</span>
-  <textarea class="form-control" aria-label="With textarea  name="content" type="text" value="{{post.content}}" class="form-input""></textarea>
-</div>
+   
 <br>
         
         
     </form>
    
-    <button type="submit" class="btn btn-primary">Update Post</button>
+    <a href="/posts/{{id}}/edit" class="btn btn-primary">Edit</a>
 </div>
   </div>
   <hr />
@@ -44,10 +36,17 @@
       {{/each}}
     </ul>
   </div>
-  <div>
-  <textarea class="form-control" aria-label="With textarea"  name="content" type="text" class="form-input"></textarea>
-  <br>
-  <div class="text-center"><button type="submit" class="btn btn-success">Add a comment</button></div>
+ <div>
+    <form name="comment-form" id="{{id}}">
+      <div class="mb-3">
+        <label for="comment" class="form-label">Add your comment here...</label>
+        <textarea class="form-control" id="comment" rows="3"></textarea>
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-success" type="submit">Post Comment</button>
+      </div>
+    </form>
+  </div>
   
   
 

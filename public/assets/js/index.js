@@ -87,11 +87,10 @@ const handleLogoutClick = async () => {
 const handleCommentSubmit = async (event) => {
   event.preventDefault();
 
-  const message = $("#comment").val();
   const { id } = event.currentTarget;
+  const message = $("#comment").val();
 
   const requestBody = { message };
-  console.log(id, message);
 
   const options = {
     method: "POST",
@@ -99,16 +98,15 @@ const handleCommentSubmit = async (event) => {
       "Content-Type": "application/json",
     },
     redirect: "follow",
-    body: JSON.stringify({
-      requestBody,
-    }),
+    body: JSON.stringify(requestBody),
   };
 
-  const response = await fetch("/api/posts/${id}/comments", options);
-  if (response.status !== 200) {
-    console.log("FAILED LOGIN");
-  } else {
+  const response = await fetch(`/api/posts/${id}/comments`, options);
+
+  if (response.status === 200) {
     window.location.replace(window.location.pathname);
+  } else {
+    console.log("Failed to post comment");
   }
 };
 
@@ -165,30 +163,7 @@ const handlePostDelete = async (event) => {
 };
 
 const handlePostUpdate = async (event) => {
-  event.preventDefault();
-
-  const id = req.params.id;
-  console.log(id);
-
-  const options = {
-    method: "UPDATE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    redirect: "follow",
-    body: JSON.stringify({
-      post_id: id,
-    }),
-    //need req.body!!!!
-  };
-
-  const response = await fetch(`/api/posts/${id}`, options);
-
-  if (response.status !== 200) {
-    console.log("FAILED TO DELETE BLOG POST");
-  } else {
-    window.location.replace("/dashboard");
-  }
+  const { id } = event.target;
 };
 
 $("#signup-form").submit(handleSignupSubmit);
