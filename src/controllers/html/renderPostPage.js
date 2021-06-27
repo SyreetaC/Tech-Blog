@@ -35,7 +35,6 @@ const renderPostPage = async (req, res) => {
     };
   });
 
-  console.log(post, comments);
   // send YOUR data to handlebars
   res.render("viewPost", post);
 };
