@@ -1,12 +1,13 @@
 const handleSignupSubmit = async (event) => {
-  console.log("sign-up here");
   // POST request with username and password
   // /auth/sign-up
   // on success window location to /login
   event.preventDefault();
 
-  const username = $("#username-signup").val();
-  const password = $("#password-signup").val();
+  const username = $("#username").val();
+  const password = $("#password").val();
+
+  console.log(username, password);
 
   if (!username || !password) {
     console.log("YOU NEED TO ENTER SOMETHING");
@@ -174,7 +175,7 @@ const handleCommentDelete = async (event) => {};
 
 $("#signup-form").submit(handleSignupSubmit);
 $("#login-form").submit(handleLoginSubmit);
-$("#new-post-form").submit(handlePostSubmit);
+$("#create-post-btn").submit(handlePostSubmit);
 $("#delete-post-btn").click(handlePostDelete);
 $('[name="comment-form"]').submit(handleCommentSubmit);
 $("#logout-button").click(handleLogoutClick);

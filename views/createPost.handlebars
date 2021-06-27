@@ -1,14 +1,17 @@
 {{>loggedInNavBar}}
 
-<div class="card">
-  <h3 class="card-header">Create New Post</h3>
-  <form class="card-body new-post-form" id="new-post-form">
-    <label for="post-title" class="form-label">Title</label>
-    <input type="text" id="post-title" name="post-title" class="form-input" /> <br>
-
-    <label class="form-label" for="content">Content</label> 
-    <input id="post-body" name="content" class="form-input" />  <br>
-
-    <button type="submit" class="btn">Create</button>
-  </form>
+ <div class="card">
+    <h3 class="card-header text-center">Create New Post</h3>
+    <form class="card-body text-center create-post-form">
+        <label for="post-title" class="form-label">Title</label>
+        <input name="post-title" type="text" value="{{post.title}}" class="form-input" />
+       <div class="input-group">
+  <span class="input-group-text">Content</span>
+  <textarea class="form-control" aria-label="With textarea  name="content" type="text" value="{{post.content}}" class="form-input""></textarea>
 </div>
+<br>
+        <button type="submit" id="create-post-btn" class="btn btn-primary">Create post</button>
+        
+    </form>
+</div>
+  </div>

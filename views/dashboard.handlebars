@@ -1,7 +1,7 @@
 {{>loggedInNavBar}}
 
 <section class="container">
-  <h2>Your Posts</h2>
+  <h2 class="text-center">Your Posts</h2>
   <hr />
    <div class="d-flex flex-wrap justify-content-between">{{#each posts as |post|}}
       {{> blogCard}}
@@ -11,5 +11,6 @@
 
 
 {{!-- Need button on each post to say view and redirect to view posts page.  --}}
-
+<div class="text-center">
 <button type="submit" class="btn"><a class="link" href="/create-post">Add New Post</a></button>
+</div>
